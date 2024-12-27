@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artview</title>
+    <script src="https://cdn.jsdelivr.net/npm/imagekit@6.0.0/dist/index.min.js"></script>'
+</head>
+
+<body>
+    <input type="file" name="upload" accept="image/*" id="upload">
+    <script>
+        var imagekit = new ImageKit({
+            publicKey: "ypublic_88LoA7H1krINVqQqY5fQ3+XFkh4=",
+            privateKey: "private_rX+KfJ5xvSOKdX/CphY+hv4/q1w=",
+            urlEndpoint: "https://ik.imagekit.io/drawpawapp/"
+        });
+        document.querySelector("#upload").onchange = (e) => {
+            var name = prompt("choose a name!")
+            var imageurl = URL.createObjectURL(e.target.files[0])
+            var url = imagekit.upload({
+                file: e.target.files[0],
+                filename: name + ".png"
+            })
+        }
+    </script>
+</body>
+
+</html>
