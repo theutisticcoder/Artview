@@ -10,10 +10,11 @@
 
 <body>
     <input type="file" name="upload" accept="image/*" id="upload">
-    <script>
-       
+    <script type="module">
+       import imgboxify from 'https://cdn.jsdelivr.net/npm/imgboxify@1.0.3/+esm'
+
         document.querySelector("#upload").onchange = async (e) => {
-            const uploader = await Imgbox.create();
+            const uploader = await imgboxify.create();
         const result = await uploader.uploadImages([ e.target.files[0]]);
         console.log(result);
         }
